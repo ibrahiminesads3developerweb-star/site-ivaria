@@ -410,282 +410,401 @@
   <!-- Falling petals -->
   <div class="petal pt1"></div><div class="petal pt2"></div><div class="petal pt3"></div>
   <div class="petal pt4"></div><div class="petal pt5"></div><div class="petal pt6"></div>
-  <div class="petal pt7"></div><div class="petal pt8"></div><div class="petal pt9"></div><div class="petal pt10"></div>
+  <div class="petal pt7"></div><div class="petal pt8"></div>
 
   <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <filter id="sd"><feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#7a5000" flood-opacity=".28"/></filter>
-      <filter id="sd2"><feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#7a5000" flood-opacity=".2"/></filter>
-      <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      <radialGradient id="trunkG" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7a5010"/><stop offset="50%" stop-color="#c8940a"/><stop offset="100%" stop-color="#7a5010"/></radialGradient>
-      <radialGradient id="cocoG" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#c8a830"/><stop offset="100%" stop-color="#6b4400"/></radialGradient>
+      <filter id="sd"><feDropShadow dx="3" dy="6" stdDeviation="6" flood-color="#5a3a00" flood-opacity=".3"/></filter>
+      <filter id="sd2"><feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#5a3a00" flood-opacity=".22"/></filter>
+      <radialGradient id="trunkG" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#6b4200"/>
+        <stop offset="40%" stop-color="#c49020"/>
+        <stop offset="100%" stop-color="#6b4200"/>
+      </radialGradient>
+      <!-- Open coconut shell gradient -->
+      <radialGradient id="shellOut" cx="40%" cy="35%" r="65%">
+        <stop offset="0%" stop-color="#a07030"/>
+        <stop offset="60%" stop-color="#5c3800"/>
+        <stop offset="100%" stop-color="#3a2000"/>
+      </radialGradient>
+      <radialGradient id="shellIn" cx="45%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#fffaf0"/>
+        <stop offset="70%" stop-color="#f0e8d0"/>
+        <stop offset="100%" stop-color="#d8c8a0"/>
+      </radialGradient>
+      <radialGradient id="milk" cx="50%" cy="50%" r="55%">
+        <stop offset="0%" stop-color="rgba(255,252,240,.92)"/>
+        <stop offset="100%" stop-color="rgba(240,230,200,.4)"/>
+      </radialGradient>
+      <!-- Tiare petal gradient -->
+      <radialGradient id="petalG" cx="50%" cy="70%" r="70%">
+        <stop offset="0%" stop-color="#fffef5"/>
+        <stop offset="100%" stop-color="#f0ead8"/>
+      </radialGradient>
+      <radialGradient id="centerG" cx="40%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#ffe066"/>
+        <stop offset="60%" stop-color="#f5a800"/>
+        <stop offset="100%" stop-color="#c07800"/>
+      </radialGradient>
     </defs>
 
-    <!-- ═══ PALM 1 — right tall ═══ -->
-    <g class="palm-anim" style="transform-origin:1150px 860px">
-      <!-- trunk -->
-      <path d="M1150,860 C1145,750 1148,640 1155,530 C1160,420 1158,310 1148,180" stroke="url(#trunkG)" stroke-width="28" fill="none" stroke-linecap="round" filter="url(#sd)"/>
-      <path d="M1150,860 C1145,750 1148,640 1155,530 C1160,420 1158,310 1148,180" stroke="rgba(255,220,100,.15)" stroke-width="12" fill="none" stroke-linecap="round"/>
-      <!-- trunk segments -->
-      <g stroke="#a07020" stroke-width="1.5" opacity=".4">
-        <path d="M1147,800 Q1155,802 1152,808"/><path d="M1148,760 Q1156,762 1153,768"/>
-        <path d="M1149,720 Q1157,722 1154,728"/><path d="M1150,680 Q1158,682 1155,688"/>
-        <path d="M1151,640 Q1158,642 1155,648"/><path d="M1152,600 Q1158,602 1155,608"/>
+    <!-- ═══════════════ PALM TREE 1 — right tall ═══════════════ -->
+    <g class="palm-anim" style="transform-origin:1160px 860px">
+      <!-- trunk curved -->
+      <path d="M1160,860 C1154,740 1158,610 1165,490 C1170,380 1168,270 1158,140"
+            stroke="url(#trunkG)" stroke-width="30" fill="none" stroke-linecap="round" filter="url(#sd)"/>
+      <!-- bark texture lines -->
+      <path d="M1160,860 C1154,740 1158,610 1165,490 C1170,380 1168,270 1158,140"
+            stroke="rgba(255,200,80,.12)" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <g stroke="#8a5c10" stroke-width="1.8" opacity=".35" fill="none">
+        <path d="M1157,820 C1162,822 1163,830 1158,832"/>
+        <path d="M1158,780 C1163,782 1164,790 1159,792"/>
+        <path d="M1159,740 C1164,742 1165,750 1160,752"/>
+        <path d="M1160,700 C1165,702 1166,710 1161,712"/>
+        <path d="M1161,660 C1166,662 1167,670 1162,672"/>
+        <path d="M1162,620 C1167,622 1168,630 1163,632"/>
       </g>
       <!-- fronds -->
-      <g transform="translate(1148,180)">
-        <g class="palm-anim" style="transform-origin:0px 0px;animation-duration:3s">
-          <path d="M0,0 C-30,-18 -80,-30 -150,-22 C-100,-38 -40,-20 0,0Z" fill="#4a7a20" filter="url(#sd2)"/>
-          <path d="M0,0 C-30,-18 -80,-30 -150,-22" stroke="#3a6010" stroke-width="3.5" fill="none"/>
-          <path d="M-20,-6 C-60,-20 -110,-28 -155,-20" stroke="#6aa030" stroke-width="1" opacity=".5" fill="none"/>
+      <g transform="translate(1158,140)">
+        <!-- frond 1 left-down -->
+        <g class="palm-anim3" style="transform-origin:0 0;animation-duration:3.5s">
+          <path d="M0,0 C-30,-10 -90,-18 -180,-8 C-110,-26 -38,-12 0,0Z" fill="#3d6e18" filter="url(#sd2)"/>
+          <path d="M0,0 C-30,-10 -90,-18 -180,-8" stroke="#2d5010" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- leaflets -->
+          <g opacity=".6" stroke="#5a8a24" stroke-width="1" fill="none">
+            <path d="M-20,-4 L-28,-14"/><path d="M-40,-7 L-50,-18"/><path d="M-60,-10 L-72,-22"/>
+            <path d="M-80,-13 L-94,-25"/><path d="M-100,-15 L-116,-27"/><path d="M-120,-16 L-138,-28"/>
+            <path d="M-140,-15 L-158,-26"/><path d="M-160,-13 L-178,-22"/>
+          </g>
         </g>
-        <g style="transform:rotate(40deg);transform-origin:0px 0px" class="palm-anim2">
-          <path d="M0,0 C-25,-22 -70,-38 -140,-34 C-88,-46 -32,-24 0,0Z" fill="#5a8a28"/>
-          <path d="M0,0 C-25,-22 -70,-38 -140,-34" stroke="#3a6010" stroke-width="3.5" fill="none"/>
+        <!-- frond 2 right-down -->
+        <g style="transform:rotate(45deg);transform-origin:0 0" class="palm-anim2">
+          <path d="M0,0 C-25,-12 -75,-22 -160,-14 C-95,-28 -30,-14 0,0Z" fill="#4a7a20" filter="url(#sd2)"/>
+          <path d="M0,0 C-25,-12 -75,-22 -160,-14" stroke="#3a6010" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <g opacity=".55" stroke="#6a9830" stroke-width="1" fill="none">
+            <path d="M-18,-5 L-24,-16"/><path d="M-38,-8 L-46,-20"/><path d="M-60,-11 L-70,-24"/>
+            <path d="M-82,-14 L-95,-27"/><path d="M-105,-16 L-120,-29"/><path d="M-128,-16 L-145,-28"/>
+          </g>
         </g>
-        <g style="transform:rotate(80deg);transform-origin:0px 0px" class="palm-anim">
-          <path d="M0,0 C-15,-28 -50,-50 -110,-52 C-60,-60 -20,-30 0,0Z" fill="#6a9832"/>
-          <path d="M0,0 C-15,-28 -50,-50 -110,-52" stroke="#4a7018" stroke-width="3" fill="none"/>
+        <!-- frond 3 up-left -->
+        <g style="transform:rotate(-40deg);transform-origin:0 0" class="palm-anim">
+          <path d="M0,0 C-22,-16 -65,-32 -135,-30 C-80,-40 -26,-18 0,0Z" fill="#5a8a28" filter="url(#sd2)"/>
+          <path d="M0,0 C-22,-16 -65,-32 -135,-30" stroke="#3a6010" stroke-width="3.5" fill="none" stroke-linecap="round"/>
         </g>
-        <g style="transform:rotate(-35deg);transform-origin:0px 0px" class="palm-anim3">
-          <path d="M0,0 C-20,-20 -60,-32 -120,-28 C-72,-40 -26,-22 0,0Z" fill="#3d6e18"/>
-          <path d="M0,0 C-20,-20 -60,-32 -120,-28" stroke="#2d5010" stroke-width="3.5" fill="none"/>
+        <!-- frond 4 up-right -->
+        <g style="transform:rotate(90deg);transform-origin:0 0" class="palm-anim3">
+          <path d="M0,0 C-18,-18 -52,-36 -108,-36 C-64,-44 -22,-20 0,0Z" fill="#4a7a20"/>
+          <path d="M0,0 C-18,-18 -52,-36 -108,-36" stroke="#3a6010" stroke-width="3.5" fill="none" stroke-linecap="round"/>
         </g>
-        <g style="transform:rotate(-72deg);transform-origin:0px 0px" class="palm-anim2">
-          <path d="M0,0 C10,-30 30,-58 70,-64 C40,-68 12,-34 0,0Z" fill="#507e22"/>
-          <path d="M0,0 C10,-30 30,-58 70,-64" stroke="#3a6010" stroke-width="3" fill="none"/>
+        <!-- frond 5 far up-left -->
+        <g style="transform:rotate(-80deg);transform-origin:0 0" class="palm-anim2">
+          <path d="M0,0 C10,-22 28,-50 62,-58 C36,-64 12,-26 0,0Z" fill="#3d6e18"/>
+          <path d="M0,0 C10,-22 28,-50 62,-58" stroke="#2d5010" stroke-width="3" fill="none" stroke-linecap="round"/>
         </g>
-        <g style="transform:rotate(120deg);transform-origin:0px 0px" class="palm-anim">
-          <path d="M0,0 C-10,-24 -30,-46 -70,-50 C-42,-56 -14,-28 0,0Z" fill="#4a7a20" opacity=".8"/>
-          <path d="M0,0 C-10,-24 -30,-46 -70,-50" stroke="#3a6010" stroke-width="2.5" fill="none"/>
-        </g>
-        <!-- coconuts cluster -->
-        <g class="coco-bob">
-          <circle cx="-8" cy="14" r="13" fill="url(#cocoG)" filter="url(#sd2)"/>
-          <circle cx="10" cy="18" r="11" fill="url(#cocoG)"/>
-          <circle cx="-2" cy="28" r="10" fill="url(#cocoG)" opacity=".9"/>
-          <ellipse cx="-8" cy="10" rx="4" ry="3" fill="rgba(255,230,100,.2)"/>
-          <ellipse cx="10" cy="14" rx="3" ry="2.5" fill="rgba(255,230,100,.18)"/>
-        </g>
-      </g>
-    </g>
-
-    <!-- ═══ PALM 2 — left medium ═══ -->
-    <g class="palm-anim2" style="transform-origin:180px 860px">
-      <path d="M180,860 C178,780 182,680 185,570 C188,460 185,360 178,250" stroke="url(#trunkG)" stroke-width="22" fill="none" stroke-linecap="round" filter="url(#sd)"/>
-      <g transform="translate(178,250)">
-        <g class="palm-anim" style="transform-origin:0px 0px;animation-duration:3.5s">
-          <path d="M0,0 C25,-16 70,-25 130,-18 C82,-32 30,-18 0,0Z" fill="#4a7a20"/>
-          <path d="M0,0 C25,-16 70,-25 130,-18" stroke="#3a6010" stroke-width="3" fill="none"/>
-        </g>
-        <g style="transform:rotate(-45deg);transform-origin:0px 0px" class="palm-anim3">
-          <path d="M0,0 C-22,-18 -62,-28 -118,-22 C-72,-34 -26,-20 0,0Z" fill="#5a8a28"/>
-          <path d="M0,0 C-22,-18 -62,-28 -118,-22" stroke="#3a6010" stroke-width="3" fill="none"/>
-        </g>
-        <g style="transform:rotate(50deg);transform-origin:0px 0px" class="palm-anim2">
-          <path d="M0,0 C18,-20 50,-36 100,-34 C62,-42 22,-22 0,0Z" fill="#6a9832"/>
-          <path d="M0,0 C18,-20 50,-36 100,-34" stroke="#4a7018" stroke-width="2.5" fill="none"/>
-        </g>
-        <g style="transform:rotate(-90deg);transform-origin:0px 0px" class="palm-anim">
-          <path d="M0,0 C-8,-24 -24,-46 -55,-50 C-32,-54 -10,-26 0,0Z" fill="#3d6e18"/>
-          <path d="M0,0 C-8,-24 -24,-46 -55,-50" stroke="#2d5010" stroke-width="2.5" fill="none"/>
-        </g>
-        <g style="transform:rotate(100deg);transform-origin:0px 0px" class="palm-anim3">
-          <path d="M0,0 C10,-20 28,-38 58,-38 C34,-44 12,-22 0,0Z" fill="#507e22"/>
-          <path d="M0,0 C10,-20 28,-38 58,-38" stroke="#3a6010" stroke-width="2.5" fill="none"/>
-        </g>
-        <!-- coconuts -->
-        <g class="coco-bob2">
-          <circle cx="6" cy="12" r="10" fill="url(#cocoG)" filter="url(#sd2)"/>
-          <circle cx="-6" cy="18" r="9" fill="url(#cocoG)"/>
+        <!-- frond 6 down-right -->
+        <g style="transform:rotate(130deg);transform-origin:0 0" class="palm-anim">
+          <path d="M0,0 C-12,-16 -36,-32 -72,-32 C-44,-38 -14,-18 0,0Z" fill="#6a9832" opacity=".85"/>
+          <path d="M0,0 C-12,-16 -36,-32 -72,-32" stroke="#4a7018" stroke-width="3" fill="none" stroke-linecap="round"/>
         </g>
       </g>
     </g>
 
-    <!-- ═══ PALM 3 — right mid small ═══ -->
-    <g class="palm-anim3" style="transform-origin:1350px 860px">
-      <path d="M1350,860 C1347,800 1350,720 1352,620 C1354,530 1352,440 1347,340" stroke="url(#trunkG)" stroke-width="16" fill="none" stroke-linecap="round" opacity=".85"/>
-      <g transform="translate(1347,340)">
-        <g class="palm-anim2" style="transform-origin:0px 0px;animation-duration:4s">
-          <path d="M0,0 C-18,-12 -50,-20 -95,-14 C-60,-24 -22,-14 0,0Z" fill="#4a7a20" opacity=".85"/>
-          <path d="M0,0 C-18,-12 -50,-20 -95,-14" stroke="#3a6010" stroke-width="2.5" fill="none"/>
+    <!-- ═══════════════ PALM TREE 2 — left ═══════════════ -->
+    <g class="palm-anim2" style="transform-origin:200px 860px">
+      <path d="M200,860 C195,760 198,640 204,520 C208,420 206,320 198,210"
+            stroke="url(#trunkG)" stroke-width="24" fill="none" stroke-linecap="round" filter="url(#sd)"/>
+      <g transform="translate(198,210)">
+        <g class="palm-anim" style="transform-origin:0 0;animation-duration:4s">
+          <path d="M0,0 C22,-12 68,-20 140,-12 C86,-26 26,-14 0,0Z" fill="#4a7a20" filter="url(#sd2)"/>
+          <path d="M0,0 C22,-12 68,-20 140,-12" stroke="#3a6010" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <g opacity=".55" stroke="#6a9830" stroke-width="1" fill="none">
+            <path d="M16,-4 L20,-14"/><path d="M34,-7 L40,-18"/><path d="M54,-10 L62,-22"/>
+            <path d="M74,-12 L84,-24"/><path d="M94,-14 L106,-26"/><path d="M114,-14 L128,-24"/>
+          </g>
         </g>
-        <g style="transform:rotate(55deg);transform-origin:0px 0px" class="palm-anim">
-          <path d="M0,0 C15,-14 40,-24 80,-20 C50,-28 18,-16 0,0Z" fill="#5a8a28" opacity=".82"/>
-          <path d="M0,0 C15,-14 40,-24 80,-20" stroke="#3a6010" stroke-width="2" fill="none"/>
+        <g style="transform:rotate(-50deg);transform-origin:0 0" class="palm-anim3">
+          <path d="M0,0 C-20,-14 -58,-28 -120,-26 C-72,-34 -24,-16 0,0Z" fill="#5a8a28" filter="url(#sd2)"/>
+          <path d="M0,0 C-20,-14 -58,-28 -120,-26" stroke="#3a6010" stroke-width="3.5" fill="none" stroke-linecap="round"/>
         </g>
-        <g style="transform:rotate(-40deg);transform-origin:0px 0px" class="palm-anim3">
-          <path d="M0,0 C-14,-14 -40,-24 -80,-22 C-50,-28 -16,-16 0,0Z" fill="#6a9832" opacity=".8"/>
-          <path d="M0,0 C-14,-14 -40,-24 -80,-22" stroke="#4a7018" stroke-width="2" fill="none"/>
+        <g style="transform:rotate(55deg);transform-origin:0 0" class="palm-anim2">
+          <path d="M0,0 C16,-16 44,-32 88,-30 C54,-38 18,-18 0,0Z" fill="#3d6e18"/>
+          <path d="M0,0 C16,-16 44,-32 88,-30" stroke="#2d5010" stroke-width="3" fill="none" stroke-linecap="round"/>
         </g>
-        <g style="transform:rotate(100deg);transform-origin:0px 0px" class="palm-anim2">
-          <path d="M0,0 C8,-16 22,-30 45,-32 C28,-36 10,-18 0,0Z" fill="#3d6e18" opacity=".75"/>
-          <path d="M0,0 C8,-16 22,-30 45,-32" stroke="#2d5010" stroke-width="2" fill="none"/>
+        <g style="transform:rotate(-100deg);transform-origin:0 0" class="palm-anim">
+          <path d="M0,0 C-8,-20 -22,-42 -50,-46 C-30,-52 -10,-24 0,0Z" fill="#6a9832" opacity=".8"/>
+          <path d="M0,0 C-8,-20 -22,-42 -50,-46" stroke="#4a7018" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
-        <circle cx="0" cy="10" r="8" fill="url(#cocoG)" class="coco-bob"/>
-        <circle cx="10" cy="14" r="7" fill="url(#cocoG)" class="coco-bob2" opacity=".9"/>
+        <g style="transform:rotate(110deg);transform-origin:0 0" class="palm-anim3">
+          <path d="M0,0 C8,-16 24,-32 52,-32 C32,-38 10,-18 0,0Z" fill="#507e22" opacity=".82"/>
+          <path d="M0,0 C8,-16 24,-32 52,-32" stroke="#3a6010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </g>
       </g>
     </g>
 
-    <!-- ═══ PALM 4 — far left background ═══ -->
-    <g class="palm-anim" style="transform-origin:60px 860px;opacity:.5">
-      <path d="M60,860 C58,800 60,720 63,620 C66,530 64,440 58,340" stroke="#8B6914" stroke-width="12" fill="none" stroke-linecap="round"/>
-      <g transform="translate(58,340)">
-        <path d="M0,0 C20,-10 55,-16 100,-12 C65,-20 24,-12 0,0Z" fill="#4a7a20"/>
-        <path d="M0,0 C-15,-10 -42,-16 -80,-12 C-52,-20 -18,-12 0,0Z" fill="#5a8a28" style="transform:rotate(-20deg)"/>
-        <path d="M0,0 C10,-14 30,-24 60,-24 C38,-28 12,-16 0,0Z" fill="#3d6e18" style="transform:rotate(60deg)"/>
+    <!-- ═══════════════ PALM TREE 3 — right small bg ═══════════════ -->
+    <g class="palm-anim3" style="transform-origin:1360px 860px;opacity:.75">
+      <path d="M1360,860 C1357,790 1360,700 1363,595 C1366,500 1364,405 1358,300"
+            stroke="url(#trunkG)" stroke-width="17" fill="none" stroke-linecap="round"/>
+      <g transform="translate(1358,300)">
+        <g class="palm-anim2" style="transform-origin:0 0;animation-duration:5s">
+          <path d="M0,0 C-16,-10 -48,-16 -95,-10 C-58,-20 -20,-12 0,0Z" fill="#4a7a20"/>
+          <path d="M0,0 C-16,-10 -48,-16 -95,-10" stroke="#2d5010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </g>
+        <g style="transform:rotate(50deg);transform-origin:0 0" class="palm-anim">
+          <path d="M0,0 C12,-12 36,-22 72,-18 C44,-26 14,-14 0,0Z" fill="#5a8a28"/>
+          <path d="M0,0 C12,-12 36,-22 72,-18" stroke="#3a6010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </g>
+        <g style="transform:rotate(-45deg);transform-origin:0 0" class="palm-anim3">
+          <path d="M0,0 C-12,-12 -35,-22 -70,-18 C-42,-26 -14,-14 0,0Z" fill="#3d6e18"/>
+          <path d="M0,0 C-12,-12 -35,-22 -70,-18" stroke="#2d5010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </g>
+        <g style="transform:rotate(100deg);transform-origin:0 0" class="palm-anim2">
+          <path d="M0,0 C6,-14 18,-26 38,-26 C24,-32 8,-16 0,0Z" fill="#507e22" opacity=".8"/>
+          <path d="M0,0 C6,-14 18,-26 38,-26" stroke="#3a6010" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </g>
       </g>
     </g>
 
-    <!-- ═══ TIARE FLOWERS ═══ -->
-
-    <!-- Flower helper macro as repeated group -->
-    <!-- Big flower — center right -->
-    <g class="fl-f1" transform="translate(980,420) scale(1.3)" filter="url(#glow)">
-      <g opacity=".95">
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-        <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-        <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-        <circle cx="0" cy="0" r="7" fill="#e5a815"/>
-        <circle cx="0" cy="0" r="3" fill="#c88800"/>
+    <!-- ═══════════════ PALM TREE 4 — far left bg ═══════════════ -->
+    <g class="palm-anim" style="transform-origin:55px 860px;opacity:.55">
+      <path d="M55,860 C52,800 55,720 58,620 C61,535 59,445 53,345"
+            stroke="#8B6914" stroke-width="13" fill="none" stroke-linecap="round"/>
+      <g transform="translate(53,345)">
+        <path d="M0,0 C18,-8 50,-14 95,-10 C58,-18 20,-12 0,0Z" fill="#4a7a20" opacity=".85"/>
+        <path d="M0,0 C-14,-10 -40,-16 -80,-12 C-48,-20 -16,-12 0,0Z" fill="#5a8a28" opacity=".8" style="transform:rotate(-25deg)"/>
+        <path d="M0,0 C8,-14 24,-26 50,-24 C30,-30 10,-16 0,0Z" fill="#3d6e18" opacity=".75" style="transform:rotate(65deg)"/>
       </g>
     </g>
 
-    <!-- Flower left side -->
-    <g class="fl-f2" transform="translate(280,360) scale(1.1)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
-      <circle cx="0" cy="0" r="3" fill="#c88800"/>
+    <!-- ═══════════════ OPEN COCONUTS — separate, scattered ═══════════════ -->
+
+    <!-- Coconut 1 — bottom left, big, open half facing up -->
+    <g class="coco-bob" transform="translate(120,680) rotate(-15)">
+      <!-- outer shell bottom -->
+      <ellipse cx="0" cy="0" rx="52" ry="28" fill="#3a2000" filter="url(#sd)"/>
+      <!-- outer shell texture -->
+      <ellipse cx="0" cy="-2" rx="52" ry="27" fill="url(#shellOut)"/>
+      <!-- fibrous outer texture -->
+      <g stroke="#2a1800" stroke-width="1" opacity=".4" fill="none">
+        <path d="M-48,-4 C-30,-12 30,-12 48,-4"/><path d="M-50,0 C-32,-8 32,-8 50,0"/>
+        <path d="M-46,4 C-28,-4 28,-4 46,4"/><path d="M-40,8 C-24,0 24,0 40,8"/>
+        <path d="M-30,11 C-16,4 16,4 30,11"/>
+      </g>
+      <!-- inner white flesh -->
+      <ellipse cx="0" cy="-6" rx="42" ry="20" fill="url(#shellIn)"/>
+      <!-- coconut water pool in center -->
+      <ellipse cx="0" cy="-5" rx="22" ry="10" fill="url(#milk)" opacity=".8"/>
+      <!-- water shimmer -->
+      <ellipse cx="-6" cy="-8" rx="8" ry="3.5" fill="rgba(255,255,255,.5)" transform="rotate(-10,-6,-8)"/>
+      <!-- flesh texture lines -->
+      <g stroke="#c8b888" stroke-width=".8" opacity=".5" fill="none">
+        <path d="M-38,-8 C-20,-18 20,-18 38,-8"/>
+        <path d="M-40,-4 C-22,-14 22,-14 40,-4"/>
+        <path d="M-38,2 C-20,-8 20,-8 38,2"/>
+      </g>
     </g>
 
-    <!-- Flower top center -->
-    <g class="fl-f3" transform="translate(650,110) scale(.8)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
-      <circle cx="0" cy="0" r="3" fill="#c88800"/>
+    <!-- Coconut 2 — right side, tilted open -->
+    <g class="coco-bob2" transform="translate(1240,560) rotate(20)">
+      <ellipse cx="0" cy="0" rx="46" ry="25" fill="#3a2000" filter="url(#sd)"/>
+      <ellipse cx="0" cy="-2" rx="46" ry="24" fill="url(#shellOut)"/>
+      <g stroke="#2a1800" stroke-width="1" opacity=".35" fill="none">
+        <path d="M-42,-3 C-26,-10 26,-10 42,-3"/>
+        <path d="M-44,1 C-28,-6 28,-6 44,1"/>
+        <path d="M-40,5 C-24,-2 24,-2 40,5"/>
+      </g>
+      <ellipse cx="0" cy="-5" rx="37" ry="18" fill="url(#shellIn)"/>
+      <ellipse cx="0" cy="-5" rx="18" ry="8" fill="url(#milk)" opacity=".75"/>
+      <ellipse cx="-5" cy="-7" rx="7" ry="3" fill="rgba(255,255,255,.45)" transform="rotate(-8,-5,-7)"/>
     </g>
 
-    <!-- Flower far right -->
-    <g class="fl-f4" transform="translate(1340,320) scale(.75)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
-      <circle cx="0" cy="0" r="3" fill="#c88800"/>
+    <!-- Coconut 3 — center right, large open half -->
+    <g class="coco-bob" transform="translate(880,720) rotate(-8)" style="animation-delay:.9s">
+      <ellipse cx="0" cy="0" rx="58" ry="31" fill="#3a2000" filter="url(#sd)"/>
+      <ellipse cx="0" cy="-2" rx="58" ry="30" fill="url(#shellOut)"/>
+      <g stroke="#2a1800" stroke-width="1.2" opacity=".4" fill="none">
+        <path d="M-54,-4 C-34,-13 34,-13 54,-4"/>
+        <path d="M-56,0 C-36,-9 36,-9 56,0"/>
+        <path d="M-52,5 C-32,-4 32,-4 52,5"/>
+        <path d="M-44,9 C-26,0 26,0 44,9"/>
+      </g>
+      <ellipse cx="0" cy="-7" rx="48" ry="22" fill="url(#shellIn)"/>
+      <ellipse cx="0" cy="-6" rx="26" ry="12" fill="url(#milk)" opacity=".82"/>
+      <ellipse cx="-7" cy="-10" rx="9" ry="4" fill="rgba(255,255,255,.55)" transform="rotate(-12,-7,-10)"/>
+      <!-- drops of milk -->
+      <ellipse cx="18" cy="-2" rx="3" ry="4" fill="rgba(255,252,240,.7)" transform="rotate(10,18,-2)"/>
+      <ellipse cx="-16" cy="0" rx="2.5" ry="3.5" fill="rgba(255,252,240,.6)" transform="rotate(-8,-16,0)"/>
     </g>
 
-    <!-- Flower bottom left -->
-    <g class="fl-f5" transform="translate(420,620) scale(.9)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
-      <circle cx="0" cy="0" r="3" fill="#c88800"/>
+    <!-- Coconut 4 — top right area, small -->
+    <g class="coco-bob2" transform="translate(1050,220) rotate(10)" style="animation-delay:1.4s">
+      <ellipse cx="0" cy="0" rx="34" ry="18" fill="#3a2000" filter="url(#sd2)"/>
+      <ellipse cx="0" cy="-1.5" rx="34" ry="17" fill="url(#shellOut)"/>
+      <ellipse cx="0" cy="-4" rx="27" ry="13" fill="url(#shellIn)"/>
+      <ellipse cx="0" cy="-4" rx="13" ry="6" fill="url(#milk)" opacity=".7"/>
+      <ellipse cx="-4" cy="-6" rx="5" ry="2.5" fill="rgba(255,255,255,.45)" transform="rotate(-10,-4,-6)"/>
     </g>
 
-    <!-- Flower right mid -->
-    <g class="fl-f6" transform="translate(1120,600) scale(.65)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
-      <circle cx="0" cy="0" r="3" fill="#c88800"/>
+    <!-- Coconut 5 — left mid, medium -->
+    <g class="coco-bob" transform="translate(360,480) rotate(-20)" style="animation-delay:.5s">
+      <ellipse cx="0" cy="0" rx="40" ry="22" fill="#3a2000" filter="url(#sd2)"/>
+      <ellipse cx="0" cy="-2" rx="40" ry="21" fill="url(#shellOut)"/>
+      <g stroke="#2a1800" stroke-width="1" opacity=".35" fill="none">
+        <path d="M-36,-3 C-22,-10 22,-10 36,-3"/>
+        <path d="M-37,1 C-23,-6 23,-6 37,1"/>
+        <path d="M-34,5 C-20,-2 20,-2 34,5"/>
+      </g>
+      <ellipse cx="0" cy="-5" rx="32" ry="15" fill="url(#shellIn)"/>
+      <ellipse cx="0" cy="-5" rx="15" ry="7" fill="url(#milk)" opacity=".75"/>
+      <ellipse cx="-4" cy="-7" rx="6" ry="2.5" fill="rgba(255,255,255,.5)" transform="rotate(-8,-4,-7)"/>
     </g>
 
-    <!-- Flower center left small -->
-    <g class="fl-f7" transform="translate(520,240) scale(.55)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(308.6)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
+    <!-- ═══════════════ TIARE / MONOI FLOWERS — separate, everywhere ═══════════════ -->
+
+    <!-- helper: each flower is 7 petals + center -->
+    <!-- Flower 1 — large, upper right -->
+    <g class="fl-f1" transform="translate(1000,160) scale(1.4)" filter="url(#sd2)">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <!-- petal vein -->
+      <g stroke="rgba(220,200,160,.5)" stroke-width=".8" fill="none">
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(0)"/>
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(51.4)"/>
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(102.8)"/>
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(154.3)"/>
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(205.7)"/>
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(257.1)"/>
+        <line x1="0" y1="0" x2="0" y2="-50" transform="rotate(308.6)"/>
+      </g>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
+      <!-- stamens -->
+      <g fill="#f5c020">
+        <circle cx="0" cy="-10" r="2"/><circle cx="9.5" cy="-5" r="2"/>
+        <circle cx="9.5" cy="5" r="2"/><circle cx="0" cy="10" r="2"/>
+        <circle cx="-9.5" cy="5" r="2"/><circle cx="-9.5" cy="-5" r="2"/>
+      </g>
     </g>
 
-    <!-- Flower right bottom small -->
-    <g class="fl-f8" transform="translate(820,700) scale(.5)">
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(0)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(51.4)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(102.8)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(154.3)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffef0" transform="rotate(205.7)"/>
-      <ellipse cx="0" cy="-26" rx="11" ry="22" fill="#fffde8" transform="rotate(257.1)"/>
-      <circle cx="0" cy="0" r="13" fill="#f7ca3a"/>
-      <circle cx="0" cy="0" r="7" fill="#e5a815"/>
+    <!-- Flower 2 — left side mid -->
+    <g class="fl-f2" transform="translate(290,340) scale(1.15)">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
     </g>
 
-    <!-- ═══ FLOATING COCONUTS ═══ -->
-    <g class="coco-bob" transform="translate(380,480)">
-      <circle cx="0" cy="0" r="18" fill="url(#cocoG)" filter="url(#sd2)"/>
-      <ellipse cx="-4" cy="-6" rx="6" ry="4" fill="rgba(255,230,100,.18)"/>
-      <path d="M-6,-10 C0,-18 8,-14 6,-8" stroke="#6b4400" stroke-width="1.5" fill="none"/>
-    </g>
-    <g class="coco-bob2" transform="translate(760,540)">
-      <circle cx="0" cy="0" r="14" fill="url(#cocoG)"/>
-      <ellipse cx="-3" cy="-4" rx="4" ry="3" fill="rgba(255,230,100,.15)"/>
-    </g>
-    <g class="coco-bob" transform="translate(1260,680)" style="animation-delay:1.2s">
-      <circle cx="0" cy="0" r="16" fill="url(#cocoG)" filter="url(#sd2)"/>
-      <ellipse cx="-4" cy="-5" rx="5" ry="3.5" fill="rgba(255,230,100,.16)"/>
-    </g>
-    <g class="coco-bob2" transform="translate(90,420)">
-      <circle cx="0" cy="0" r="12" fill="url(#cocoG)" opacity=".8"/>
-    </g>
-    <g class="coco-bob" transform="translate(580,740)" style="animation-delay:.6s">
-      <circle cx="0" cy="0" r="15" fill="url(#cocoG)" opacity=".75"/>
+    <!-- Flower 3 — top center -->
+    <g class="fl-f3" transform="translate(660,90) scale(.85)">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
     </g>
 
-    <!-- ═══ GROUND WAVES ═══ -->
-    <path d="M0,720 C280,680 580,710 860,695 C1100,682 1280,715 1440,700 L1440,860 L0,860Z" fill="#c9a040" opacity=".25"/>
-    <path d="M0,780 C320,754 620,778 920,764 C1160,752 1300,775 1440,760 L1440,860 L0,860Z" fill="#b08020" opacity=".2"/>
-    <path d="M0,830 C360,818 700,832 1040,822 C1240,816 1360,828 1440,820 L1440,860 L0,860Z" fill="#906010" opacity=".15"/>
+    <!-- Flower 4 — far right mid -->
+    <g class="fl-f4" transform="translate(1390,440) scale(.7)">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
+    </g>
 
-    <!-- ═══ LIGHT RAYS from top right ═══ -->
-    <g opacity=".06" style="mix-blend-mode:overlay">
-      <path d="M1300,0 L600,860 L700,860 L1440,0Z" fill="#fff8c0"/>
-      <path d="M1380,0 L720,860 L820,860 L1440,40Z" fill="#fff8c0"/>
-      <path d="M1200,0 L480,860 L560,860 L1300,0Z" fill="#fff8c0"/>
+    <!-- Flower 5 — bottom left -->
+    <g class="fl-f5" transform="translate(460,660) scale(.95)">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
+    </g>
+
+    <!-- Flower 6 — center -->
+    <g class="fl-f6" transform="translate(740,400) scale(.6)" style="opacity:.7">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
+    </g>
+
+    <!-- Flower 7 — right low -->
+    <g class="fl-f7" transform="translate(1170,710) scale(.75)">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
+    </g>
+
+    <!-- Flower 8 — top left -->
+    <g class="fl-f8" transform="translate(140,180) scale(.8)" style="opacity:.75">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(51.4)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(102.8)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(154.3)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(205.7)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(257.1)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="url(#petalG)" transform="rotate(308.6)"/>
+      <circle cx="0" cy="0" r="14" fill="url(#centerG)"/>
+      <circle cx="0" cy="0" r="8" fill="#f5a000"/>
+      <circle cx="0" cy="0" r="4" fill="#c07800"/>
+    </g>
+
+    <!-- ═══ GROUND ═══ -->
+    <path d="M0,730 C280,700 580,720 860,708 C1100,696 1280,718 1440,706 L1440,860 L0,860Z" fill="#c9a040" opacity=".2"/>
+    <path d="M0,790 C320,768 640,785 940,772 C1180,762 1310,782 1440,768 L1440,860 L0,860Z" fill="#a07818" opacity=".16"/>
+    <path d="M0,840 C360,828 720,842 1060,832 C1260,826 1360,838 1440,830 L1440,860 L0,860Z" fill="#806010" opacity=".12"/>
+
+    <!-- ═══ LIGHT RAYS ═══ -->
+    <g opacity=".05">
+      <path d="M1300,0 L600,860 L680,860 L1440,0Z" fill="#fff8c0"/>
+      <path d="M1400,0 L740,860 L820,860 L1440,60Z" fill="#fff8c0"/>
+      <path d="M1180,0 L460,860 L540,860 L1280,0Z" fill="#fff8c0"/>
     </g>
   </svg>
 </div>
 
+  
   <div class="wrap hero-layout">
     <div class="hero-card">
       <span class="eyebrow line">Cosmétiques bio &amp; naturels</span>
