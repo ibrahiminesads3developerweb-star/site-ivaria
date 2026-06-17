@@ -252,8 +252,18 @@
   }
   @media(prefers-reduced-motion:reduce){.leaf{animation:none}*{scroll-behavior:auto}}
 
+
+  /* ── promo images ── */
+  .promo-imgs{padding:0 0 70px}
+  .promo-img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+  .promo-img-card{border-radius:20px;overflow:hidden;box-shadow:0 16px 40px -20px rgba(43,58,28,.35);transition:transform .25s}
+  .promo-img-card:hover{transform:translateY(-6px)}
+  .promo-img-card img{width:100%;height:auto;display:block}
+  @media(max-width:760px){.promo-img-grid{grid-template-columns:1fr;max-width:420px}}
+
   /* ── Arabic / RTL ── */
   [lang="ar"] body{font-family:'Noto Sans Arabic','Segoe UI',system-ui,sans-serif;direction:rtl;text-align:right}
+  .car-viewport,.car-track,.slide{direction:ltr!important}
   [lang="ar"] .nav{flex-direction:row-reverse}
   [lang="ar"] .nav-links{flex-direction:row-reverse}
   [lang="ar"] .nav-tools{flex-direction:row-reverse}
@@ -376,6 +386,16 @@
   </div>
 </section>
 
+
+<!-- PROMO IMAGES -->
+<section class="promo-imgs" id="promoImgs">
+  <div class="wrap">
+    <div class="promo-img-grid" id="promoImgGrid">
+      <!-- dynamically filled -->
+    </div>
+  </div>
+</section>
+
 <!-- PHILOSOPHIE -->
 <section class="philo" id="philosophie">
   <div class="wrap philo-grid">
@@ -484,6 +504,23 @@ const products=[
    usage:"Appliquez sur cheveux mouillés, massez le cuir chevelu, laissez poser 1 à 2 minutes puis rincez. Renouvelez si besoin. Usage régulier recommandé.",
    price:2900,old:null}
 ];
+
+/* ── promo images per product ── */
+function renderPromoImages(){
+  const grid=document.getElementById('promoImgGrid');
+  if(!grid) return;
+  const imgs=products.map(p=>`
+    <div class="promo-img-card">
+      ${p.promoImg?`<img src="${p.promoImg}" alt="${p.name}" loading="lazy">`
+        :`<div style="aspect-ratio:9/16;background:linear-gradient(160deg,var(--cream-2),var(--olive) 180%);display:grid;place-items:center;text-align:center;padding:30px">
+            <div><div style="font-size:2rem;margin-bottom:12px">🌿</div>
+            <b style="font-family:'Fraunces';font-size:1.3rem;color:#fff">${p.name}</b>
+            <p style="color:rgba(255,255,255,.75);margin-top:8px;font-size:.85rem">${p.ribbon||''}</p></div>
+          </div>`}
+    </div>`).join('');
+  grid.innerHTML=imgs;
+}
+
 let cart={};
 const fmt=n=>n.toLocaleString('fr-FR')+' DA';
 
@@ -533,7 +570,9 @@ function openProduct(id){
       <div class="pm-body">
         <div class="subt">${p.sub}</div>
         <h2>${p.name}</h2>
-        <div class="pm-size">Contenance : ${p.size}</div>
+        <div class="pm-size">${t('contenance')}${p.size}</div>
+        ${p.bogo?`<div style="display:inline-flex;align-items:center;gap:10px;background:#f0f4ea;border-radius:14px;padding:10px 18px;margin-bottom:12px"><span style="font-weight:700;font-size:.9rem;color:var(--olive-d)">${currentLang==='ar'?'الكمية':'Quantité'}</span><span style="font-size:.82rem;color:var(--muted)">${currentLang==='ar'?'1 طلب = 2 وحدات (1+1)':'1 lot = 2 unités (1+1)'}</span></div>`:''}
+        ${p.duo?`<div style="display:inline-flex;align-items:center;gap:10px;background:#f0f4ea;border-radius:14px;padding:10px 18px;margin-bottom:12px"><span style="font-weight:700;font-size:.9rem;color:var(--olive-d)">${currentLang==='ar'?'الكمية':'Quantité'}</span><span style="font-size:.82rem;color:var(--muted)">${currentLang==='ar'?'علبة 1 = 1900 دج | 2 علب = 2900 دج + 1 مجاناً':'1 pot = 1 900 DA | 2 pots = 2 900 DA + 1 offert'}</span></div>`:''}
         <div class="pm-price">${p.duo?fmt(p.price)+`<small style='font-size:.6em;display:block;font-weight:500;color:var(--olive)'>ou 2 unités pour ${fmt(p.price2)} + 1 offerte 🎁</small>`:fmt(p.price)+(p.old?`<s>${fmt(p.old)}</s>`:'')}</div>
         ${p.bogo?'<div class="bogo-note">🎁 1 acheté = 1 offert — ajoutez 2 unités, une seule est facturée</div>':p.duo?'<div class="bogo-note">🎁 1 unité : '+fmt(p.price)+' — 2 unités : '+fmt(p.price2)+' + 1 offerte</div>':''}
         <p class="pm-desc">${p.desc}</p>
@@ -674,14 +713,14 @@ function t(k){return LANG[currentLang][k]||k;}
 function toggleLang(){
   currentLang=currentLang==='fr'?'ar':'fr';
   document.documentElement.lang=currentLang;
-  applyTranslations();
   renderProducts();
+  applyTranslations();
   updateCart();
 }
 function applyTranslations(){
   const L=t;
   /* lang button */
-  document.querySelectorAll('.lang').forEach(el=>el.innerHTML=el.innerHTML.replace(/(FR|AR)/,L('langBtn')));
+  document.querySelectorAll('.lang').forEach(el=>{const svg=el.querySelector('svg');el.innerHTML='';if(svg)el.appendChild(svg);el.appendChild(document.createTextNode(' '+L('langBtn')));});
   /* nav */
   const navLinks=document.querySelectorAll('.nav-links .lnk, .mobile-menu a');
   const navKeys=['navBoutique','navHistoire','navProduits','navBoutique','navHistoire','navProduits'];
@@ -754,14 +793,8 @@ function applyTranslations(){
 /* patch renderProducts to use current lang labels */
 const _origRender=renderProducts;
 window.addEventListener('DOMContentLoaded',()=>{
-  const origRender=renderProducts;
-  window.renderProducts=function(){
-    origRender();
-    /* patch view-link texts */
-    document.querySelectorAll('.view-link').forEach(el=>el.textContent=t('viewLink'));
-    document.querySelectorAll('.add').forEach(el=>el.textContent=t('addBtn'));
-  };
   renderProducts();
+  renderPromoImages();
   updateCart();
 });
 </script>
