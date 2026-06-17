@@ -58,10 +58,9 @@
 
   /* ---------- hero ---------- */
   .hero{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden}
-  .hero-bg{position:absolute;inset:0;z-index:0;
-    background:linear-gradient(180deg,#b9d4e0 0%,#cfe0d9 38%,#e6ebdc 64%,var(--cream) 92%)}
-  .hero-bg .sun{position:absolute;top:14%;right:16%;width:160px;height:160px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,247,224,.95),rgba(255,247,224,0) 70%);filter:blur(4px)}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#fdf6e3}
+  .hero-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-bg .sun{display:none}
   .hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:1}
   .leaf{position:absolute;z-index:1;opacity:.55;animation:sway 9s ease-in-out infinite;transform-origin:center}
   .leaf svg{width:100%;height:100%;display:block}
@@ -253,7 +252,35 @@
   @media(prefers-reduced-motion:reduce){.leaf{animation:none}*{scroll-behavior:auto}}
 
 
+
+  /* hero 2-col layout */
+  .hero-layout{display:flex;align-items:center;justify-content:space-between;gap:40px;padding-top:50px;padding-bottom:50px}
+  .hero-logo-side{flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .hero-logo-ring{position:relative;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.92),rgba(253,246,227,.6));
+    backdrop-filter:blur(16px);border:2px solid rgba(255,255,255,.7);
+    box-shadow:0 30px 80px -20px rgba(160,120,40,.35),0 0 0 8px rgba(255,248,220,.3);
+    display:grid;place-items:center;text-align:center;padding:30px;
+    animation:floatLogo 6s ease-in-out infinite}
+  .hero-logo-img{width:160px;height:auto;display:block;margin:0 auto 12px;filter:drop-shadow(0 8px 16px rgba(100,80,20,.2))}
+  .hero-logo-tagline{font-family:'Mulish';font-size:.82rem;font-weight:700;color:var(--olive-d);letter-spacing:1px;text-transform:uppercase;line-height:1.5}
+  .hero-logo-tagline em{display:block;font-family:'Fraunces';font-style:italic;font-size:1rem;color:var(--accent);font-weight:600;text-transform:none;letter-spacing:0}
+  @keyframes floatLogo{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+  @media(max-width:880px){.hero-layout{flex-direction:column}.hero-logo-side{order:-1}.hero-logo-ring{width:200px;height:200px}.hero-logo-img{width:110px}}
+  @media(max-width:520px){.hero-logo-ring{width:160px;height:160px}.hero-logo-img{width:90px}}
+
   /* ── promo images ── */
+
+  .promo-img-placeholder{aspect-ratio:3/4;background:linear-gradient(160deg,#f5e6c0 0%,#d4a84b 50%,#8a6200 100%);display:flex;align-items:flex-end;padding:28px;position:relative;overflow:hidden}
+  .promo-img-placeholder::before{content:'🌿';position:absolute;top:20px;right:20px;font-size:3.5rem;opacity:.18}
+  .promo-img-placeholder::after{content:'';position:absolute;top:0;left:0;right:0;height:60%;background:linear-gradient(180deg,rgba(255,248,220,.15),transparent)}
+  .pip-inner{position:relative;z-index:2;width:100%}
+  .pip-tag{display:inline-block;background:rgba(255,255,255,.25);color:#fff;font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:.5px}
+  .pip-name{font-family:'Fraunces';font-size:1.55rem;color:#fff;font-weight:800;margin-bottom:4px;line-height:1.15}
+  .pip-sub{font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:14px;font-style:italic}
+  .pip-price{font-family:'Fraunces';font-size:1.4rem;font-weight:800;color:#fff8c8;margin-bottom:16px}
+  .pip-cta{font-size:.82rem;font-weight:700;color:#fff;opacity:.85;border-top:1px solid rgba(255,255,255,.25);padding-top:12px}
+
   .promo-imgs{padding:0 0 70px}
   .promo-img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
   .promo-img-card{border-radius:20px;overflow:hidden;box-shadow:0 16px 40px -20px rgba(43,58,28,.35);transition:transform .25s}
@@ -324,19 +351,147 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <span class="sun"></span>
-    <span class="leaf lf1"><svg viewBox="0 0 50 50"><path d="M25 2 C40 14 40 38 25 48 C10 38 10 14 25 2 Z M25 6 V46" fill="#527039" opacity=".9" stroke="#3c5429" stroke-width="1"/></svg></span>
-    <span class="leaf lf2"><svg viewBox="0 0 50 50"><path d="M25 2 C40 14 40 38 25 48 C10 38 10 14 25 2 Z M25 6 V46" fill="#6a8049" stroke="#4a5e30" stroke-width="1"/></svg></span>
-    <span class="leaf lf3"><svg viewBox="0 0 50 50"><path d="M25 2 C40 14 40 38 25 48 C10 38 10 14 25 2 Z M25 6 V46" fill="#527039" stroke="#3c5429" stroke-width="1"/></svg></span>
-    <span class="leaf lf4"><svg viewBox="0 0 50 50"><path d="M25 2 C40 14 40 38 25 48 C10 38 10 14 25 2 Z M25 6 V46" fill="#7a8f54" stroke="#4a5e30" stroke-width="1"/></svg></span>
-    <span class="leaf lf5"><svg viewBox="0 0 50 50"><path d="M25 2 C40 14 40 38 25 48 C10 38 10 14 25 2 Z M25 6 V46" fill="#466031" stroke="#34471f" stroke-width="1"/></svg></span>
-    <svg class="hills" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,220 C260,150 480,200 720,170 C980,140 1180,210 1440,160 L1440,320 L0,320 Z" fill="#8aa05f" opacity=".85"/>
-      <path d="M0,260 C300,200 520,250 760,225 C1020,200 1220,255 1440,215 L1440,320 L0,320 Z" fill="#5f7740" opacity=".92"/>
-      <path d="M0,300 C320,265 600,300 880,285 C1120,272 1280,300 1440,282 L1440,320 L0,320 Z" fill="#3f5329"/>
+    <!-- 3D beige / coconut / monoi background -->
+    <svg class="hero-scene" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="skyGrad" cx="60%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#fdf6e3"/>
+          <stop offset="40%" stop-color="#f5e6c0"/>
+          <stop offset="100%" stop-color="#e8d5a0"/>
+        </radialGradient>
+        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff8e1" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#fff8e1" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="coconutShad" cx="50%" cy="70%" r="50%">
+          <stop offset="0%" stop-color="#c8a96e" stop-opacity=".35"/>
+          <stop offset="100%" stop-color="#c8a96e" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+        <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
+        <filter id="shadow3d"><feDropShadow dx="4" dy="8" stdDeviation="6" flood-color="#8a6a30" flood-opacity=".3"/></filter>
+      </defs>
+      <!-- sky -->
+      <rect width="1440" height="860" fill="url(#skyGrad)"/>
+      <!-- warm light bloom -->
+      <ellipse cx="820" cy="200" rx="320" ry="220" fill="url(#glow1)" filter="url(#blur8)" opacity=".7"/>
+      <!-- ground -->
+      <ellipse cx="720" cy="820" rx="900" ry="120" fill="#d4b87a" opacity=".18" filter="url(#blur8)"/>
+      <!-- === COCONUT PALM RIGHT === -->
+      <g transform="translate(1080,640) rotate(-8)" filter="url(#shadow3d)" opacity=".88">
+        <!-- trunk -->
+        <path d="M0,0 C-8,-80 -4,-180 6,-280 C10,-340 8,-420 0,-500" stroke="#8B6914" stroke-width="22" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M0,0 C-8,-80 -4,-180 6,-280 C10,-340 8,-420 0,-500" stroke="#C8A84B" stroke-width="10" fill="none" stroke-linecap="round" opacity=".4"/>
+        <!-- palm leaf 1 -->
+        <g transform="translate(6,-500)">
+          <path d="M0,0 C-60,-30 -120,-15 -180,10" stroke="#5a7a2e" stroke-width="4" fill="none"/>
+          <path d="M0,0 C-55,-20 -110,-5 -170,18 C-120,-8 -60,-28 0,0Z" fill="#6b8f38" opacity=".85"/>
+          <path d="M-20,-4 C-70,-18 -130,-4 -185,14" stroke="#88af50" stroke-width="1.5" fill="none" opacity=".5"/>
+        </g>
+        <!-- palm leaf 2 -->
+        <g transform="translate(6,-500) rotate(35)">
+          <path d="M0,0 C-70,-25 -140,-10 -200,15" stroke="#5a7a2e" stroke-width="4" fill="none"/>
+          <path d="M0,0 C-65,-15 -135,0 -195,20 C-140,-12 -70,-22 0,0Z" fill="#7aa042" opacity=".8"/>
+        </g>
+        <!-- palm leaf 3 -->
+        <g transform="translate(6,-500) rotate(-30)">
+          <path d="M0,0 C-50,-40 -100,-35 -160,-20" stroke="#4a6a24" stroke-width="4" fill="none"/>
+          <path d="M0,0 C-48,-32 -98,-28 -155,-14 C-100,-32 -50,-38 0,0Z" fill="#5a7a2e" opacity=".82"/>
+        </g>
+        <!-- palm leaf 4 right -->
+        <g transform="translate(6,-500) rotate(70)">
+          <path d="M0,0 C40,-35 80,-40 130,-30" stroke="#5a7a2e" stroke-width="4" fill="none"/>
+          <path d="M0,0 C38,-28 78,-34 126,-22 C82,-38 40,-32 0,0Z" fill="#6b8f38" opacity=".78"/>
+        </g>
+        <!-- palm leaf 5 -->
+        <g transform="translate(6,-500) rotate(-65)">
+          <path d="M0,0 C30,-50 60,-60 100,-55" stroke="#4a6a24" stroke-width="3.5" fill="none"/>
+          <path d="M0,0 C28,-44 58,-54 96,-48 C60,-58 30,-48 0,0Z" fill="#7aa042" opacity=".7"/>
+        </g>
+        <!-- coconuts -->
+        <circle cx="2" cy="-498" r="10" fill="#8B6914" opacity=".9"/>
+        <circle cx="16" cy="-504" r="8" fill="#7a5c10" opacity=".85"/>
+        <circle cx="-8" cy="-506" r="9" fill="#9a7520" opacity=".8"/>
+      </g>
+      <!-- === COCONUT PALM LEFT (smaller, bg) === -->
+      <g transform="translate(160,720) rotate(6)" opacity=".6">
+        <path d="M0,0 C5,-60 2,-140 -2,-220 C-4,-280 -2,-350 4,-420" stroke="#8B6914" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <g transform="translate(-2,-420)">
+          <path d="M0,0 C-50,-22 -100,-10 -145,8 C-100,-14 -50,-18 0,0Z" fill="#6b8f38" opacity=".75"/>
+          <path d="M0,0 C30,-28 60,-32 95,-24 C62,-30 32,-24 0,0Z" fill="#5a7a2e" opacity=".7"/>
+          <path d="M0,0 C-40,-32 -80,-28 -120,-16 C-82,-26 -42,-28 0,0Z" fill="#7aa042" opacity=".65"/>
+          <path d="M0,0 C20,-40 45,-44 75,-38 C47,-42 22,-36 0,0Z" fill="#88af50" opacity=".6"/>
+        </g>
+        <circle cx="-2" cy="-420" r="7" fill="#8B6914"/>
+        <circle cx="8" cy="-424" r="6" fill="#7a5c10"/>
+      </g>
+      <!-- === MONOI / TIARE FLOWERS === -->
+      <!-- Flower 1 (big, right side) -->
+      <g transform="translate(940,500)" filter="url(#shadow3d)">
+        <g opacity=".92">
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(51.4)"/>
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(102.8)"/>
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(154.2)"/>
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(205.6)"/>
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(257)"/>
+          <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(308.4)"/>
+          <circle cx="0" cy="0" r="12" fill="#f5c842"/>
+          <circle cx="0" cy="0" r="7" fill="#e8a820"/>
+        </g>
+      </g>
+      <!-- Flower 2 (medium, left area) -->
+      <g transform="translate(340,440) scale(.7)" opacity=".7">
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(51.4)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(102.8)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(154.2)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(205.6)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(257)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(308.4)"/>
+        <circle cx="0" cy="0" r="12" fill="#f5c842"/>
+        <circle cx="0" cy="0" r="7" fill="#e8a820"/>
+      </g>
+      <!-- Flower 3 (small, far right) -->
+      <g transform="translate(1260,360) scale(.55)" opacity=".65">
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(51.4)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(102.8)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(154.2)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(205.6)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(257)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(308.4)"/>
+        <circle cx="0" cy="0" r="12" fill="#f5c842"/>
+        <circle cx="0" cy="0" r="7" fill="#e8a820"/>
+      </g>
+      <!-- Flower 4 bottom center -->
+      <g transform="translate(680,680) scale(.5)" opacity=".55">
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(51.4)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(102.8)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fffde8" transform="rotate(154.2)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(205.6)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="24" fill="#fff8c8" transform="rotate(257)"/>
+        <circle cx="0" cy="0" r="12" fill="#f5c842"/>
+        <circle cx="0" cy="0" r="7" fill="#e8a820"/>
+      </g>
+      <!-- ground hills warm -->
+      <path d="M0,700 C260,640 500,680 720,660 C960,640 1180,680 1440,650 L1440,860 L0,860 Z" fill="#c9a96e" opacity=".22"/>
+      <path d="M0,760 C300,720 560,760 800,742 C1060,724 1240,758 1440,730 L1440,860 L0,860 Z" fill="#b8963e" opacity=".18"/>
+      <path d="M0,820 C340,800 660,820 960,808 C1160,800 1300,820 1440,808 L1440,860 L0,860 Z" fill="#a07c20" opacity=".14"/>
+      <!-- floating petals -->
+      <g opacity=".4">
+        <ellipse cx="200" cy="320" rx="6" ry="10" fill="#fffde8" transform="rotate(-20,200,320)"/>
+        <ellipse cx="780" cy="180" rx="5" ry="8" fill="#fff8c8" transform="rotate(15,780,180)"/>
+        <ellipse cx="1100" cy="420" rx="4" ry="7" fill="#fffde8" transform="rotate(-30,1100,420)"/>
+        <ellipse cx="480" cy="560" rx="5" ry="9" fill="#fff8c8" transform="rotate(25,480,560)"/>
+        <ellipse cx="1300" cy="280" rx="4" ry="6" fill="#fffde8" transform="rotate(-10,1300,280)"/>
+      </g>
+      <!-- subtle 3D depth shadow at bottom -->
+      <rect x="0" y="760" width="1440" height="100" fill="url(#coconutShad)" filter="url(#blur8)"/>
     </svg>
   </div>
-  <div class="wrap">
+  <div class="wrap hero-layout">
     <div class="hero-card">
       <span class="eyebrow line">Cosmétiques bio &amp; naturels</span>
       <h1>L'Essence de la Nature,<em>au Service de votre Peau</em></h1>
@@ -344,6 +499,12 @@
       <div class="cta">
         <button class="btn btn-fill" onclick="document.getElementById('boutique').scrollIntoView()">Découvrir la Boutique</button>
         <a href="#philosophie" class="btn btn-outline">Notre Histoire</a>
+      </div>
+    </div>
+    <div class="hero-logo-side">
+      <div class="hero-logo-ring">
+        <img src="" id="heroLogo" alt="IVARIA BIO" class="hero-logo-img">
+        <div class="hero-logo-tagline">Cosmétiques Bio<br><em>100% Naturels</em></div>
       </div>
     </div>
   </div>
@@ -438,6 +599,7 @@
           <a href="https://www.instagram.com/ivariabio" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
           <a href="#" aria-label="Site"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></a>
           <a href="#" aria-label="Téléphone"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2C10 24 0 14 0 4c0-1 1-2 2-2"/></svg></a>
+          <a href="https://www.tiktok.com/@ivariabio" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
         </div>
       </div>
       <div class="foot-col">
@@ -510,12 +672,17 @@ function renderPromoImages(){
   const grid=document.getElementById('promoImgGrid');
   if(!grid) return;
   const imgs=products.map(p=>`
-    <div class="promo-img-card">
-      ${p.promoImg?`<img src="${p.promoImg}" alt="${p.name}" loading="lazy">`
-        :`<div style="aspect-ratio:9/16;background:linear-gradient(160deg,var(--cream-2),var(--olive) 180%);display:grid;place-items:center;text-align:center;padding:30px">
-            <div><div style="font-size:2rem;margin-bottom:12px">🌿</div>
-            <b style="font-family:'Fraunces';font-size:1.3rem;color:#fff">${p.name}</b>
-            <p style="color:rgba(255,255,255,.75);margin-top:8px;font-size:.85rem">${p.ribbon||''}</p></div>
+    <div class="promo-img-card" onclick="openProduct(${p.id})" style="cursor:pointer">
+      ${p.promoImg
+        ?`<img src="${p.promoImg}" alt="${p.name}" loading="lazy">`
+        :`<div class="promo-img-placeholder">
+            <div class="pip-inner">
+              <div class="pip-tag">${p.ribbon||'Soin Premium'}</div>
+              <div class="pip-name">${p.name}</div>
+              <div class="pip-sub">${p.sub}</div>
+              <div class="pip-price">${p.duo?fmt(p.price)+' · Pack 2+1':fmt(p.price)}</div>
+              <div class="pip-cta">Voir le produit →</div>
+            </div>
           </div>`}
     </div>`).join('');
   grid.innerHTML=imgs;
